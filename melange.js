@@ -1,50 +1,54 @@
-// melange.js — minimal Blink theme (Melange)
+// Theme for Blink.sh
+// Based on Melange.nvim
+// Follows system light/dark preference automatically
 
 const melangeLight = {
-  base: "#F1F1F1",
-  text: "#54433A",
-  cursor: "#54433A",
+  base: "#F1F1F1", // background
+  text: "#54433A", // foreground
+  cursor: "#54433A", // cursor color
+  // ANSI 16-color palette
   palette: [
-    "#E9E1DB", // 0
-    "#C77B8B", // 1
-    "#6E9B72", // 2
-    "#BC5C00", // 3
-    "#7892BD", // 4
-    "#BE79BB", // 5
-    "#739797", // 6
-    "#7D6658", // 7
-    "#A98A78", // 8
-    "#BF0021", // 9
-    "#3A684A", // 10
-    "#A06D00", // 11
-    "#465AA4", // 12
-    "#904180", // 13
-    "#3D6568", // 14
-    "#54433A", // 15
+    "#E9E1DB", // 0: black
+    "#C77B8B", // 1: red
+    "#6E9B72", // 2: green
+    "#BC5C00", // 3: yellow
+    "#7892BD", // 4: blue
+    "#BE79BB", // 5: magenta
+    "#739797", // 6: cyan
+    "#7D6658", // 7: white
+    "#A98A78", // 8: bright black (grey)
+    "#BF0021", // 9: bright red
+    "#3A684A", // 10: bright green
+    "#A06D00", // 11: bright yellow
+    "#465AA4", // 12: bright blue
+    "#904180", // 13: bright magenta
+    "#3D6568", // 14: bright cyan
+    "#54433A", // 15: bright white
   ],
 };
 
 const melangeDark = {
-  base: "#292522",
-  text: "#ECE1D7",
-  cursor: "#ECE1D7",
+  base: "#292522", // background
+  text: "#ECE1D7", // foreground
+  cursor: "#ECE1D7", // cursor color
+  // ANSI 16-color palette
   palette: [
-    "#34302C", // 0
-    "#BD8183", // 1
-    "#78997A", // 2
-    "#E49B5D", // 3
-    "#7F91B2", // 4
-    "#B380B0", // 5
-    "#7B9695", // 6
-    "#C1A78E", // 7
-    "#867462", // 8
-    "#D47766", // 9
-    "#85B695", // 10
-    "#EBC06D", // 11
-    "#A3A9CE", // 12
-    "#CF9BC2", // 13
-    "#89B3B6", // 14
-    "#ECE1D7", // 15
+    "#34302C", // 0: black
+    "#BD8183", // 1: red
+    "#78997A", // 2: green
+    "#E49B5D", // 3: yellow
+    "#7F91B2", // 4: blue
+    "#B380B0", // 5: magenta
+    "#7B9695", // 6: cyan
+    "#C1A78E", // 7: white
+    "#867462", // 8: bright black (grey)
+    "#D47766", // 9: bright red
+    "#85B695", // 10: bright green
+    "#EBC06D", // 11: bright yellow
+    "#A3A9CE", // 12: bright blue
+    "#CF9BC2", // 13: bright magenta
+    "#89B3B6", // 14: bright cyan
+    "#ECE1D7", // 15: bright white
   ],
 };
 
@@ -57,12 +61,5 @@ const setTheme = ({ matches = false } = {}) => {
 };
 
 const mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-// modern -> fallback for older environments
-if (typeof mq.addEventListener === "function") {
-  mq.addEventListener("change", setTheme);
-} else if (typeof mq.addListener === "function") {
-  mq.addListener(setTheme);
-}
-
+mq.addEventListener("change", setTheme);
 setTheme({ matches: mq.matches });
